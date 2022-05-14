@@ -19,7 +19,7 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/api/user")
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user){
         System.out.println("UserApiController 호출됨");
         //실제로 DB에 insert하고 아래에서 return되면 됨.
@@ -28,6 +28,8 @@ public class UserApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
     }
 
+    /*
+    //전통적인 로그인 방식 / security 이용할거라 주석처리함.
     @PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
         System.out.println("UserApiController : login 호출됨");
@@ -37,5 +39,5 @@ public class UserApiController {
             session.setAttribute("principal", principal);
         }
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-    }
+    }*/
 }

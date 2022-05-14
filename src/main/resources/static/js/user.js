@@ -4,9 +4,9 @@ let index = {
             this.save();
         });
 
-        $("#btn-login").on("click", ()=>{
-            this.login();
-        });
+        // $("#btn-login").on("click", ()=>{
+        //     this.login();
+        // });
     },
 
     save: function (){
@@ -24,7 +24,7 @@ let index = {
         //ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환해준다.
         $.ajax({
             type: "POST",
-            url: "/api/user",
+            url: "/auth/joinProc",
             data: JSON.stringify(data), //http body데이터
             contentType: "application/json; charset=utf-8", //body데이터가 어떤 타입인지(MIME)
             dataType: "json" //서버에서 응답이 왔을때 기본적으로 모든것이 문자열인데, 만약 생긴게 json이라면 -> javascript오브젝트로 변경한다
@@ -39,8 +39,9 @@ let index = {
         }).fail(function (error){
             alert(JSON.stringify(error));
         });
-    },
+    }
 
+    /* 기본방식 로그인
     login: function (){
         //alert("user의 save 함수 호출!");
         let data = {
@@ -70,7 +71,7 @@ let index = {
         }).fail(function (error){
             alert(JSON.stringify(error));
         });
-    }
+    }*/
 }
 
 index.init();
