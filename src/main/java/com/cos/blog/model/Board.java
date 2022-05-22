@@ -28,7 +28,7 @@ public class Board {
     @Lob //대용량 데이터
     private String content; //섬머노트 라이브러리 사용할거임(html섞여서 디자인됨, 용량이 커짐)
 
-    @ColumnDefault("0") //기본값 0
+    //@ColumnDefault("0") //기본값 0
     private int count; //조회수
 
     @ManyToOne(fetch = FetchType.EAGER) //연관관계 Many = board, User=one 1명의 유저는 여러개 게시글 작성가능

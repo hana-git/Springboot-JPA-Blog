@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() //csrf토큰 비활성화
                 //요청시에 csrf 토큰이 없을경우 spring security 막아버리는게 기본 / 따라서 테스트할때는 disable하는게 좋음
                 .authorizeRequests() //요청이 들어올때
-                    .antMatchers("/","/auth/**", "/js/**", "/css/**", "/image/**") //auth 하위로 들어오는건
+                    .antMatchers("/","/auth/**", "/js/**", "/css/**", "/image/**", "dummy/**") //auth 하위로 들어오는건
                     .permitAll()  // 모두 허용한다.
                     .anyRequest() //이게아닌 다른 모든 요청은
                     .authenticated()  //인증이 필요하다
