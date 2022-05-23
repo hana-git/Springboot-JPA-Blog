@@ -4,6 +4,10 @@ let index = {
             this.save();
         });
 
+        $("#btn-update").on("click", ()=>{
+            this.update();
+        });
+
         // $("#btn-login").on("click", ()=>{
         //     this.login();
         // });
@@ -35,6 +39,32 @@ let index = {
                location.href = "/";
             }else {
                 alert("회원가입에 실패했습니다. \n" + resp.data);
+            }
+        }).fail(function (error){
+            alert(JSON.stringify(error));
+        });
+    },
+
+    update: function (){
+        let data = {
+            id: $("#id").val(),
+            password: $("#password").val(),
+            email : $("#email").val()
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "/user",
+            data: JSON.stringify(data), //http body데이터
+            contentType: "application/json; charset=utf-8", //body데이터가 어떤 타입인지(MIME)
+            dataType: "json" //서버에서 응답이 왔을때 기본적으로 모든것이 문자열인데, 만약 생긴게 json이라면 -> javascript오브젝트로 변경한다
+        }).done(function (resp){
+            if(resp.data == 1){
+                console.log(resp.data);
+                alert("회원정보수정이 완료되었습니다.");
+                location.href = "/";
+            }else {
+                alert("회원정보수정이 실패했습니다. \n" + resp.data);
             }
         }).fail(function (error){
             alert(JSON.stringify(error));
