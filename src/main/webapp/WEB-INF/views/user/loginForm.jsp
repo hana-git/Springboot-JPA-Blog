@@ -9,11 +9,13 @@
     <label for="username">Username:</label>
     <input type="text" name="username" class="form-control" placeholder="Enter username" id="username">
   </div>
-  <div class="form-group">
+  <div class= "form-group">
     <label for="password">Password:</label>
     <input type="password" name="password" class="form-control" placeholder="Enter password" id="password">
   </div>
   <button id="btn-login" class="btn btn-primary">로그인</button>
+  <a href="https://kauth.kakao.com/oauth/authorize?client_id=50b5f26f736f45195b0d4a79b65920a2&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code">
+    <img height="38px" src="/image/kakao_login_medium.png"/> </a>
 </form>
 
 </div>
