@@ -1,10 +1,10 @@
 let index = {
-    init: function (){
-        $("#btn-save").on("click", ()=>{ // function 안쓰고 ()=> 사용하는 이유 : this를 바인딩하기 위해서
+    init: function () {
+        $("#btn-save").on("click", () => { // function 안쓰고 ()=> 사용하는 이유 : this를 바인딩하기 위해서
             this.save();
         });
 
-        $("#btn-update").on("click", ()=>{
+        $("#btn-update").on("click", () => {
             this.update();
         });
 
@@ -13,12 +13,12 @@ let index = {
         // });
     },
 
-    save: function (){
+    save: function () {
         //alert("user의 save 함수 호출!");
         let data = {
             username: $("#username").val(),
             password: $("#password").val(),
-            email : $("#email").val()
+            email: $("#email").val()
         };
 
         //console.log(data);
@@ -32,24 +32,25 @@ let index = {
             data: JSON.stringify(data), //http body데이터
             contentType: "application/json; charset=utf-8", //body데이터가 어떤 타입인지(MIME)
             dataType: "json" //서버에서 응답이 왔을때 기본적으로 모든것이 문자열인데, 만약 생긴게 json이라면 -> javascript오브젝트로 변경한다
-        }).done(function (resp){
-           if(resp.data == 1){
-               console.log(resp.data);
-               alert("회원가입이 완료되었습니다.");
-               location.href = "/";
-            }else {
+        }).done(function (resp) {
+            if (resp.data == 1) {
+                console.log(resp.data);
+                alert("회원가입이 완료되었습니다.");
+                location.href = "/";
+            } else {
                 alert("회원가입에 실패했습니다. \n" + resp.data);
             }
-        }).fail(function (error){
+        }).fail(function (error) {
             alert(JSON.stringify(error));
         });
     },
 
-    update: function (){
+    update: function () {
         let data = {
             id: $("#id").val(),
+            username: $("#username").val(),
             password: $("#password").val(),
-            email : $("#email").val()
+            email: $("#email").val()
         };
 
         $.ajax({
@@ -58,15 +59,15 @@ let index = {
             data: JSON.stringify(data), //http body데이터
             contentType: "application/json; charset=utf-8", //body데이터가 어떤 타입인지(MIME)
             dataType: "json" //서버에서 응답이 왔을때 기본적으로 모든것이 문자열인데, 만약 생긴게 json이라면 -> javascript오브젝트로 변경한다
-        }).done(function (resp){
-            if(resp.data == 1){
+        }).done(function (resp) {
+            if (resp.data == 1) {
                 console.log(resp.data);
                 alert("회원정보수정이 완료되었습니다.");
                 location.href = "/";
-            }else {
+            } else {
                 alert("회원정보수정이 실패했습니다. \n" + resp.data);
             }
-        }).fail(function (error){
+        }).fail(function (error) {
             alert(JSON.stringify(error));
         });
     }
