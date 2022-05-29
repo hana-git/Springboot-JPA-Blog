@@ -44,3 +44,6 @@ spring:
       enabled: true
     jsp:
       cache: false
+
+cos:
+  key: cos1234

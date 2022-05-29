@@ -24,7 +24,7 @@ public class User {
     //IDENTITY : 프로젝트에서 연결된 DB의 넘버링 전략을 따라간다. 오라클 : 시퀀스, mysql : auto_increment
     private int id; //시퀀스, auto_increment
 
-    @Column(nullable = false, length = 30, unique = true)
+    @Column(nullable = false, length = 100, unique = true)
     private String username;//id
 
     @Column(nullable = false, length = 100)
@@ -37,6 +37,8 @@ public class User {
     //private String role; //나중에 Enum을 쓰는게 좋다. //도메인 설정 (범위) admin, user, manager 권한
     @Enumerated(EnumType.STRING) //DB는 RoleType이라는게 없다. string 이라고 알려줌
     private RoleType role; //ADMIN, USER 두개로 강제지정
+
+    private String oauth; //oauth 사용자인지 구분, 일반가입시 null
 
     @CreationTimestamp //시간이 자동으로 입력된다
     private Timestamp createDate;
