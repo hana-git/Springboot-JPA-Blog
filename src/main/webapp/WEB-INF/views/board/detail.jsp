@@ -9,12 +9,13 @@
         <a href="/board/${board.id}/updateForm" class="btn btn-warning">수정</a>
         <button id="btn-delete" class="btn btn-danger">삭제</button>
     </c:if>
-   <br/><br/>
+    <br/><br/>
     <div>
         No. <span id="id"><i>${board.id}</i></span>
     </div>
     <div style="text-align: right">
-        작성자 : <spn><i>${board.user.username}</i></spn>
+        작성자 :
+        <spn><i>${board.user.username}</i></spn>
     </div>
     <br/>
     <div>
@@ -27,8 +28,15 @@
     <hr/>
 
     <div class="card">
-        <div class="card-body"><textarea class="form-control" rows="1"></textarea></div>
-        <div class="card-footer"><button class="btn btn-primary">등록</button> </div>
+        <form>
+            <input type="hidden" id="boardId" value="${board.id}"/>
+            <div class="card-body">
+                <textarea id="reply-content" class="form-control" rows="1"></textarea>
+            </div>
+            <div class="card-footer">
+                <button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
+            </div>
+        </form>
     </div>
     <br/>
     <div class="card">

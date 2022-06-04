@@ -42,6 +42,7 @@ public class Board {
     // mappedBy: 연관관계의 주인이 아니다. (난 FK가 아니에요) DB에 컬럼을 만들지마세요.
     //"board" 는 Reply 테이블의 필드이름
     @JsonIgnoreProperties({"board"})  //무한참조가 일어날수있어 Reply 객체의 board는 무시한다
+    @OrderBy("id desc")
     private List<Reply> replies;
 
     @CreationTimestamp

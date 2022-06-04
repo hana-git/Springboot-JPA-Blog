@@ -3,6 +3,7 @@ package com.cos.blog.controller.api;
 import com.cos.blog.auth.PrincipalDetail;
 import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.Board;
+import com.cos.blog.model.Reply;
 import com.cos.blog.model.User;
 import com.cos.blog.service.BoardService;
 import com.cos.blog.service.UserService;
@@ -34,4 +35,13 @@ public class BoardApiController {
         boardService.글수정하기(id, board);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
+
+
+    @PostMapping("/api/board/{boardId}/reply")
+    public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail princiapl) {
+
+        boardService.댓글쓰기(princiapl.getUser(), boardId, reply);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
 }
