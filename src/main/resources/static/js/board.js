@@ -117,7 +117,26 @@ let index = {
         }).fail(function (error){
             alert(JSON.stringify(error));
         });
+    },
+    replyDelete: function (boardId, replyId){
+
+        $.ajax({
+            type: "DELETE",
+            url: `/api/board/${boardId}/reply/${replyId}`,
+            dataType: "json"
+        }).done(function (resp){
+            if(resp.data == 1){
+                console.log(resp.data);
+                alert("댓글이 삭제되었습니다.");
+                location.href = `/board/${boardId}`;
+            }else {
+                alert("댓글 삭제가 실패했습니다. \n" + resp.data);
+            }
+        }).fail(function (error){
+            alert(JSON.stringify(error));
+        });
     }
+
     /* 기본방식 로그인
     login: function (){
         //alert("user의 save 함수 호출!");

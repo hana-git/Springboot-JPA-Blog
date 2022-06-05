@@ -38,7 +38,7 @@ public class Board {
 
     //fetch : 기본전략 LAZY - 필요할때 땡겨온다 (댓글을 바로보여주지않고 펼치기 등 기능이 있을때)
     //fetch : 기본전략 EAGER - 무조건 들고온다
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) //1개의 게시글은 여러개 답변을 가진다.
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE) //1개의 게시글은 여러개 답변을 가진다.
     // mappedBy: 연관관계의 주인이 아니다. (난 FK가 아니에요) DB에 컬럼을 만들지마세요.
     //"board" 는 Reply 테이블의 필드이름
     @JsonIgnoreProperties({"board"})  //무한참조가 일어날수있어 Reply 객체의 board는 무시한다
