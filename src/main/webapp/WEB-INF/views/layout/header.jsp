@@ -51,6 +51,9 @@
             <a class="nav-link" href="/user/updateForm">회원정보</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/image/search">이미지검색</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/logout">로그아웃</a>
           </li>
         </ul>
